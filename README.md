@@ -4,7 +4,7 @@ An IoT prototype built with Arduino Uno, Raspberry Pi, Flask, and MariaDB to mon
 
 An automated IoT-based system designed to prevent electricity wastage in air-conditioned environments by monitoring window status and enforcing a customizable ventilation grace period[cite: 3]. 
 
-Developed by **Justin Cho** and **Jaden Chua** for the Diploma in Electronic and Computer Engineering (C89) at Nanyang Polytechnic[cite: 3].
+Developed by **Jaden Chua** for the Diploma in Electronic and Computer Engineering (C89) at Nanyang Polytechnic[cite: 3].
 
 ---
 
