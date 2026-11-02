@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+  <title>Flask Jinja Templates for Databases </title>  
+</head>
+ 
+<body>
+ 
+<h1> EG1P54 Sensor Data </h1>
+<h2> {{ message }} </h2>
+ 
+<table >
+    <tr >
+      <th>No.</th>
+      <th>NYP ID</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Window State</th> 
+      <th>Time Limit (Rotary)</th>      
+      <th>Room Status</th>
+      <th>Alert</th>      
+
+    </tr>
+    {% for row in results %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+      <td>{{ row[5] }}</td>
+      <td>{{ row[6] }}</td>
+      <td>{{ row[7] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+ 
+</body>
+</html> 
