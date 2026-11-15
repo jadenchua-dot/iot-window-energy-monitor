@@ -6,6 +6,8 @@ An automated IoT-based system designed to prevent electricity wastage in air-con
 
 Developed by **Jaden Chua** for the Diploma in Electronic and Computer Engineering (C89) at Nanyang Polytechnic[cite: 3].
 
+**🎥 Demo video:** https://youtu.be/IUG_-EWEwes
+
 ---
 
 ## 📋 Table of Contents
