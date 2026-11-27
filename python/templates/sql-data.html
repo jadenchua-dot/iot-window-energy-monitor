@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="5">
+  <title>Smart Window Energy Guard</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; margin: 24px; color: #1a1a1a; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #ddd; }
+    th { background: #f3f3f3; }
+    td.alert-on { color: #b00020; font-weight: 600; }
+  </style>
+</head>
+
+<body>
+
+<h1> EG1P54 Sensor Data </h1>
+<h2> {{ message }} </h2>
+<p>Newest first. This page refreshes every 5 seconds.</p>
+
+<table>
+    <tr>
+      <th>No.</th>
+      <th>NYP ID</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Window State</th>
+      <th>Time Limit (Rotary)</th>
+      <th>Room Status</th>
+      <th>Alert</th>
+    </tr>
+    {% for row in results %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+      <td>{{ row[5] }}</td>
+      <td>{{ row[6] }}</td>
+      <td{% if 'ON' in (row[7] or '') %} class="alert-on"{% endif %}>{{ row[7] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

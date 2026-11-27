@@ -1,0 +1,37 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Unit tests (serial port and database are faked)
+        run: python -m unittest discover -s python -v
+      - name: Dashboard starts and renders (database faked)
+        run: |
+          cd python
+          python - <<'PY'
+          import app, pymysql
+          class Db:
+              def cursor(self): return self
+              def execute(self, *a): pass
+              def fetchall(self): return [(1, None, None, "2026-11-02 10:00:00", 1.0, 30.0, "Open", "Alert: ON (Time Exceeded!)")]
+              def close(self): pass
+          pymysql.connect = lambda **k: Db()
+          html = app.app.test_client().get("/Jaden").get_data(as_text=True)
+          assert "Project Part 2 Data" in html and "Jaden" in html and "alert-on" in html, html
+          print("dashboard OK")
+          PY
